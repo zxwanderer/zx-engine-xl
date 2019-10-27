@@ -47,7 +47,7 @@ Basic=0
 ;Call MUTE or INIT one more time to mute sound after stopping
 ;playing 
 
-	ORG #C000
+	; ORG #C000
 
 ;Test codes (commented)
 ;	LD A,32 ;SinglePT3(TS if TSPT3.7),ABC,Looped
