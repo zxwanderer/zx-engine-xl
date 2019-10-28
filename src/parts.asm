@@ -1,6 +1,7 @@
 DEVICE 	ZXSPECTRUM128
     ORG	#6000
-BEGIN:
+
+prog_start:
     JP start_engine
 
 engine:
@@ -10,29 +11,30 @@ player:
     include "../engine/routines/PTSPLAY.asm"
 
 start_engine:
-    MemSetBank 7
-    LD HL, music
+    MemSetBank 6
+    ld HL, music_start
     call INIT
 loop:
     ei
 pg:
     halt
 	call PLAY
-	jP pg
+	jp pg
+prog_end:
+    SAVEBIN "code.bin",prog_start, prog_end-prog_start
 
     ORG #4000
-screen:
+screen_start:
     incbin "../data/laser_screen.scr"
+screen_end:
+    SAVEBIN "screen.bin",screen_start, screen_end-screen_start
 
     SLOT 3
-
-    PAGE 7
-    ORG #C000
-music:
-    incbin "../data/music/keyjee.pt3"
-
     PAGE 6
     ORG #C000
-    incbin "../data/laser_screen.scr"
+music_start:
+    incbin "../data/music/keyjee.pt3"
+music_end:
+    SAVEBIN "music.bin",music_start, music_end-music_start
 
-    SAVESNA "../cell3326.sna",BEGIN
+    ; SAVESNA "../cell3326.sna",prog_start

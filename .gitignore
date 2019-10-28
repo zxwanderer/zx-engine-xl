@@ -1,3 +1,5 @@
-parts.out
-make_sna.out
-cell3326.sna
+*.out
+*.sna
+*.bin
+code.bin
+*.bin.zx7
