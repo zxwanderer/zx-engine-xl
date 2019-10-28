@@ -62,7 +62,7 @@
         {
             "type": "shell",
             "label": "make_trd",
-            "command": "./bin/sjasmplus --dos866 --nofakes --dirbol src/trd/make_trd.asm",
+            "command": "./bin/sjasmplus --dos866 --nofakes --dirbol src/make_trd.asm",
             "problemMatcher": "$errmatcher-sjasmplus",
             "dependsOn": [
                 "zx7"
