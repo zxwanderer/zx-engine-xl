@@ -1,6 +1,16 @@
-DEVICE 	ZXSPECTRUM128	;это внутренняя директива SJASMPLUS, которая подсказывает ему, под какой клон организовать память
-		ORG	#8000	;старт программы ровно по центру памяти 48К
+DEVICE 	ZXSPECTRUM128
+    ORG	#6000
 BEGIN:
+    JP start_engine
+
+engine:
+    include "../engine/index.asm"
+
+player:
+    include "../engine/routines/PTSPLAY.asm"
+
+start_engine:
+    MemSetBank 7
     LD HL, music
     call INIT
 loop:
@@ -10,9 +20,19 @@ pg:
 	call PLAY
 	jP pg
 
-player:
-    include "../engine/routines/PTSPLAY.asm"
+    ORG #4000
+screen:
+    incbin "../data/laser_screen.scr"
+
+    SLOT 3
+
+    PAGE 7
+    ORG #C000
 music:
     incbin "../data/music/keyjee.pt3"
 
-	SAVESNA "../cell3326.sna",BEGIN	;в папку unreal после компиляции сохранится снапшот для запуска в эмуляторе, содержащий программу, описанную сверху
+    PAGE 6
+    ORG #C000
+    incbin "../data/laser_screen.scr"
+
+    SAVESNA "../cell3326.sna",BEGIN
