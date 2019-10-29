@@ -6,16 +6,16 @@
         {
             "type": "shell",
             "label": "make_sna",
-            "command": "./bin/sjasmplus --dos866 --nofakes --dirbol src/parts.asm",
+            "command": "./bin/sjasmplus --dos866 --nofakes --dirbol src/make_sna.asm",
             "problemMatcher": "$errmatcher-sjasmplus",
             "dependsOn": [
-                // "zx7"
+                "zx7"
             ],
         },
         {
             "type": "shell",
             "label": "run_sna",
-            "command": "open -a 'Fuse' cell3326.sna",
+            "command": "open -a 'Fuse' boot.sna",
             // "command": "open -a 'Unreal Speccy Portable' cell3326.sna",
             "group": {
                 "kind": "build",

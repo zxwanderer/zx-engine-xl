@@ -35,6 +35,5 @@ screen_end:
 music_start:
     incbin "../data/music/keyjee.pt3"
 music_end:
-    SAVEBIN "music.bin",music_start, music_end-music_start
 
-    ; SAVESNA "../cell3326.sna",prog_start
+    SAVEBIN "music.bin",music_start, music_end-music_start
