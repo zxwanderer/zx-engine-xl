@@ -9,7 +9,7 @@ Basic:
  DW EndLine1 - Line1
 Line1:
  db #EA;REM
- ld sp,#5FFE
+;  ld sp,#5FFE
   ; ld sp,#FFFF
   ; res 4,(iy+1)
   ; xor a:out ($FE),a
@@ -25,18 +25,24 @@ Line1:
   di
   ld de,(#5CF4)
   ld hl, #C000
-  ld a,#15,bc,#7FFD:out (c),a
+  ld a,#17,bc,#7FFD:out (c),a
   sectors page0b,page0e
   call #3d13
 
-  ; ld a,#16,bc,#7FFD:out (c),a
-  ; ld sp,#FFFF
-  ; ld hl, #C000
+  ; push de
+  ; pop hl
+  ld a,#08,bc,#7FFD:out (c),a
+  ; ld hl, #4500
   ; ld de, #4000
   ; call unzip
-
+  ; ld sp, #F000
+loop: equ $
   di
   halt
+  ; ld a,000b,bc,#7FFD:out (c),a
+  ; ld a,000b,bc,#7FFD:out (c),a
+  jp loop
+
   ; jp START_ADDR
 
 unzip:
