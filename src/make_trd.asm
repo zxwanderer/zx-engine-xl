@@ -17,7 +17,7 @@ end_starter:
   PAGE 6
   ORG #C000
 begin_screen:
-  INCBIN "../screen.bin.zx7"
+  INCBIN "../screen.bin"
 end_screen:
 
 ;     SLOT 3
@@ -38,7 +38,11 @@ boot.page0e equ end_screen
   include "../engine/routines/basic_boot_trd.asm"
   EMPTYTRD "cell3326.trd" ;create empty TRD image
   SAVETRD "cell3326.trd", "boot.B", boot.Basic, boot.EndBasic - boot.Basic
-  SAVETRD "cell3326.trd","code.C",boot.begin,boot.end-boot.begin
+  ; SAVETRD "cell3326.trd","code.C",boot.begin,boot.end-boot.begin
+
+  DISPLAY '-----------------------------------'
+  DISPLAY 'SIZE:', boot.EndLine1 - boot.Line1
+  DISPLAY '-----------------------------------'
 
   SLOT 3
   PAGE 6
