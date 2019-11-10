@@ -9,15 +9,9 @@ Basic:
  DW EndLine1 - Line1
 Line1:
  db #EA;REM
-;  ld sp,#5FFE
-  jp run_program
-
-; unzip:
-  ; include "../../external_src/zx7/zx7.a80"
-run_program:
-
-  ld sp,#FFFF
-  res 4,(iy+1)
+ ld sp,#5FFE
+  ; ld sp,#FFFF
+  ; res 4,(iy+1)
   ; xor a:out ($FE),a
   ; ld hl,$5AFF,de,$5AFe,bc,$1B00-1,(hl),0:lddr
 
@@ -30,12 +24,14 @@ run_program:
 
   di
   ld de,(#5CF4)
-  ld hl, #4000
+  ld hl, #C000
   ld a,#15,bc,#7FFD:out (c),a
   sectors page0b,page0e
   call #3d13
+
+  ; ld a,#16,bc,#7FFD:out (c),a
   ; ld sp,#FFFF
-  ; ld hl, #4100
+  ; ld hl, #C000
   ; ld de, #4000
   ; call unzip
 
@@ -43,12 +39,16 @@ run_program:
   halt
   ; jp START_ADDR
 
-stack_ptr:
-  dw 00
+unzip:
+  include "../../external_src/zx7/zx7.a80"
+
+; stack_ptr:
+  ; dw 00
 
   db "yo,lamer!"
   db #0D
 EndLine1:
+
   db #00,#02
   DW EndLine2 - Line2
 Line2:
