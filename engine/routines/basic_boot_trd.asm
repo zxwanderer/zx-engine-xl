@@ -4,23 +4,14 @@
    db 1,5,(1+high (datae-datab))
  endm
 
+// не используем JP :(
+
 Basic:
  db #00,#01;номер строки
  DW EndLine1 - Line1
 Line1:
  db #EA;REM
-;  ld sp,#5FFE
-  ; ld sp,#FFFF
-  ; res 4,(iy+1)
-  ; xor a:out ($FE),a
-  ; ld hl,$5AFF,de,$5AFe,bc,$1B00-1,(hl),0:lddr
-
-  ; di
-  ; ld de,(#5CF4)
-  ; ld hl, LOAD_ADDR
-  ; ld a,#10,bc,#7FFD:out (c),a
-  ; sectors boot.begin,boot.end
-  ; call #3d13
+ ld sp,#5FFE
 
   di
   ld de,(#5CF4)
@@ -28,29 +19,10 @@ Line1:
   ld a,#17,bc,#7FFD:out (c),a
   sectors page0b,page0e
   call #3d13
-
-  ; push de
-  ; pop hl
   ld a,#08,bc,#7FFD:out (c),a
-  ; ld hl, #4500
-  ; ld de, #4000
-  ; call unzip
-  ; ld sp, #F000
-loop: equ $
   di
   halt
-  ; ld a,000b,bc,#7FFD:out (c),a
-  ; ld a,000b,bc,#7FFD:out (c),a
-  jp loop
-
-  ; jp START_ADDR
-
-unzip:
-  include "../../external_src/zx7/zx7.a80"
-
-; stack_ptr:
-  ; dw 00
-
+  
   db "yo,lamer!"
   db #0D
 EndLine1:

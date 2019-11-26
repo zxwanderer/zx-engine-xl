@@ -1,6 +1,6 @@
 DEVICE 	ZXSPECTRUM128
 
-;   ORG	#6000
+  ; ORG	#6000
 ; begin_starter:
 ;   ; INCBIN "../code.bin"
 ;   ld a,#17,bc,#7FFD:out (c),a
@@ -27,7 +27,6 @@ DEVICE 	ZXSPECTRUM128
 ; boot.START_ADDR equ begin_starter
 ; boot.page0b equ begin_screen
 ; boot.page0e equ end_screen
-
   include "../engine/routines/basic_boot_trd.asm"
   EMPTYTRD "cell3326.trd" ;create empty TRD image
   SAVETRD "cell3326.trd", "boot.B", boot.Basic, boot.EndBasic - boot.Basic
@@ -37,13 +36,14 @@ DEVICE 	ZXSPECTRUM128
   ; DISPLAY 'SIZE:', boot.EndLine1 - boot.Line1
   ; DISPLAY '-----------------------------------'
 
-  ; SLOT 3
-  ; PAGE 6
-  ORG #4000
+  SLOT 3
+  PAGE 7
+  ORG #C000
 begin_screen:
   INCBIN "../screen.bin"
 end_screen:
 
+  ; ORG 23641
 boot.page0b equ begin_screen
 boot.page0e equ end_screen
   DISPLAY 'boot.page0b: ', boot.page0b
