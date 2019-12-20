@@ -29,25 +29,25 @@
 ; b - бит 4 выбор ROM 48 Basic или 128
 ; r - бит 5 запрет переключения страниц
 
-    MODULE memory
+    MODULE Memory
 
     MACRO MemSetBank bank_
         ld a, bank_
-        call memory.setBank
+        call Memory.setBank
     ENDM
 
 ; mempages
-gfxBank=0
-scrBank0=1
-scrBank1=3
-mapBank0=4
-mapBank1=6
-muzBank=7
+gfxBank equ #10   //0
+scrBank0 equ #11  //1
+scrBank1 equ #13  //3
+mapBank0 equ #14  //4
+mapBank1 equ #16  //6
+muzBank equ #17   //7
 
 setBank:
 	; and 7
 	ld (curBank),a
-	or 0x10
+	; or 0x10
 	ld bc,0x7ffd
 	out (c),a
 	ret
