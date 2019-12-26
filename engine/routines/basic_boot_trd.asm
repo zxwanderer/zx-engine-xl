@@ -4,14 +4,15 @@
    db 1,5,(1+high (datae-datab))
  endm
 
-// не используем JP :(
+; basic time now
+  ORG 23867 ; Basic with TR-DOS
 
 Basic:
- db #00,#01;номер строки
- DW EndLine1 - Line1
+  db #00,#01;номер строки
+  DW EndLine1 - Line1
 Line1:
- db #EA;REM
- ld sp,#5FFE
+  db #EA;REM
+  ld sp,#5FFE
 
   di
   ld de,(#5CF4)
@@ -19,10 +20,17 @@ Line1:
   ld a,#17,bc,#7FFD:out (c),a
   sectors page0b,page0e
   call #3d13
-  ld a,#08,bc,#7FFD:out (c),a
+
   di
+  LD HL, #C000
+  LD DE, #4000
+  call unpacker
+
   halt
   
+unpacker:
+  include "zx7.a80"
+
   db "yo,lamer!"
   db #0D
 EndLine1:

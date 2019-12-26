@@ -1,8 +1,9 @@
 DEVICE 	ZXSPECTRUM128
+
     ORG	#6000
 // ------   code.bin
 
-memBufer=#8000
+memBufer equ #8000
 // при запуске имеем:
 // muzBank (#17)- сжатая музыка
 // scrBank0 (#11) - сжатая картинка
