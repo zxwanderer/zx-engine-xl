@@ -1,5 +1,7 @@
  MODULE boot
 
+include "../defines.asm"
+
  macro	sectors datab,datae
    db 1,5,(1+high (datae-datab)) ; ld bc, #__05
  endm
@@ -29,24 +31,22 @@ Line1:
   calc_sectors  begin_screen, end_screen, lenScreen
   calc_sectors  begin_music, end_music, lenMusic
 
-  DISPLAY "lenCode:", /D, lenCode
-  DISPLAY "lenScreen:", /D, lenScreen
-  DISPLAY "lenMusic:", /D, lenMusic
+  DISPLAY "sectorsCode:   ", /D, lenCode
+  DISPLAY "sectorsScreen: ", /D, lenScreen
+  DISPLAY "sectorsMusic:  ", /D, lenMusic
 
-  LD DE, #1700 + lenCode
-  call load_mempage
+  LD DE, #17*256 + lenCode
+  LD HL, #6000
+  call load_and_unpack
 
   LD DE, #17*256 + lenScreen
-  call load_mempage
-  
+  LD HL, #4000
+  call load_and_unpack
+
+  LD DE, #17*256 + lenMusic
   LD HL, #C000
-  LD DE, #4000
-  call unpacker
+  call load_and_unpack
 
-  ; CALL load_and_unpack_mempage
-
-  ; LD DE, #17*256 + lenMusic
-  ; CALL load_and_unpack_mempage
 
   di
   halt
@@ -76,24 +76,35 @@ Line1:
   ; LD DE, #4000
   ; call unpacker
 
-; грузим в #8000 и распаковываем в #C000 нужной страницы
+; Вход:
+; HL - куда распаковывать
+; D - кодовая страница, E - число секторов  
+; Процедура пользуется буфером #8000
+load_and_unpack:
+  push hl
+  call load_mempage
+  pop de
+  ld hl, #8000
+  call unpacker
+  RET
+
+
+; устанавливаем страницу памяти и грузим код в #8000
 ; вход пусть будет DE как в wanderers :)
 ; D - кодовая страница, E - число секторов
 load_mempage:
   ld a, e
   ld (set_sectors), a
   ld a,d
-  ld hl, #C000
   ld bc, #7FFD
   out (c),a; переключение нужной страницы через порт
   ld de,(#5CF4); номер последнего считанного сектора
+  ld hl, #8000
 set_sectors equ $+2
   LD BC, #0005
   call #3d13
   ret
 
-  LD HL, #C000
-  LD DE, #4000
 unpacker:
   include "zx7.a80"
 

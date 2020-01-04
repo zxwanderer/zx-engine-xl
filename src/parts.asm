@@ -17,27 +17,8 @@ player:
 
 prog_start:
 
-    ; MemSetBank Memory.muzBank // в #C000 - музыка
-    ; ld hl, #C000
-    ; ld de, memBufer
-    ; call unzip
-    ; ld hl, memBufer
-    ; ld de, #C000
-    ; ld bc, $3FFF   ; количество байт для копирования (размер файла data.bin)
-    ; ldir
-
-    ; MemSetBank Memory.scrBank0 // в #C000 - картинка
-    ; ld de, memBufer
-    ; call unzip
-    ; ld hl, memBufer
-    ; ld de, #C000
-    ; ld bc, $3FFF   ; количество байт для копирования (размер файла data.bin)
-    ; ldir
-
-    ; JP start_engine
-
 start_engine:
-    MemSetBank Memory.muzBank
+    MemSetBank muzBank
     ld HL, music_start
     call INIT
 loop:
