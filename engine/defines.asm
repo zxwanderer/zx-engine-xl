@@ -1,6 +1,6 @@
 
 ; mempages
-; gfxBank equ #10   //0
+gfxBank equ #10   //0
 ; scrBank0 equ #11  //1
                   //2 - дублирование #8000
 ; scrBank1 equ #13  //3

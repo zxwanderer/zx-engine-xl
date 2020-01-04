@@ -16,11 +16,12 @@ start_engine:
     MemSetBank muzBank
     ld HL, music_start
     call INIT
-loop:
     ei
 pg:
     halt
+    MemSetBank muzBank
 	call PLAY
+    MemSetBank gfxBank
 	jp pg
 prog_end:
     SAVEBIN "code.bin",prog_start, prog_end-prog_start
