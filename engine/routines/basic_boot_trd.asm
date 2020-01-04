@@ -24,7 +24,6 @@ Line1:
 ; code   #6000
 ; music  #C000 Slot3 Page6
 ; screen #C000 Slot3 Page7
-  di
   
   ; calc_sectors page0b,page0e, page0Len
   calc_sectors  begin_code, end_code, lenCode
@@ -35,76 +34,44 @@ Line1:
   DISPLAY "sectorsScreen: ", /D, lenScreen
   DISPLAY "sectorsMusic:  ", /D, lenMusic
 
-  LD DE, #17*256 + lenCode
-  LD HL, #6000
+  LD A, lenCode
+  LD DE, #6000
   call load_and_unpack
 
-  LD DE, #17*256 + lenScreen
-  LD HL, #4000
+  LD A, lenScreen
+  LD DE, #4000
   call load_and_unpack
 
-  LD DE, #17*256 + lenMusic
-  LD HL, #C000
-  call load_and_unpack
+  LD DE, muzBank*256 + lenMusic
+  call load_page
 
-
-  di
-  halt
-
-;  -- нужно сделать loader и unpacker как процедуры =)
+  JP #6000
   ; di
-  ; ld de,(#5CF4); номер последнего считанного сектора
-  ; ld hl, #C000
-  ; ld a,#17,bc,#7FFD:out (c),a; переключение нужной страницы через порт
-  ; sectors page0b,page0e
-  ; call #3d13
+  ; halt
 
-  ; di
-  ; LD HL, #C000
-  ; LD DE, #6000
-  ; call unpacker
-
-  ; di
-  ; ld de,(#5CF4)
-  ; ld hl, #C000
-  ; ld a,#17,bc,#7FFD:out (c),a
-  ; sectors page0b,page0e
-  ; call #3d13
-
-  ; di
-  ; LD HL, #C000
-  ; LD DE, #4000
-  ; call unpacker
+; загрузка в страницу памяти
+; D - номер страницы, E - число секторов
+load_page:
+  ld a,d
+  ld bc,#7FFD
+  out (c),a; переключение нужной страницы через порт
+  ld a, e
+  ld de, #C000
 
 ; Вход:
-; HL - куда распаковывать
-; D - кодовая страница, E - число секторов  
-; Процедура пользуется буфером #8000
+; DE - куда распаковывать
+; A - число секторов
+; Процедура пользуется буфером #8000 для загрузки с диска
 load_and_unpack:
-  push hl
-  call load_mempage
-  pop de
-  ld hl, #8000
-  call unpacker
-  RET
-
-
-; устанавливаем страницу памяти и грузим код в #8000
-; вход пусть будет DE как в wanderers :)
-; D - кодовая страница, E - число секторов
-load_mempage:
-  ld a, e
+  push de
   ld (set_sectors), a
-  ld a,d
-  ld bc, #7FFD
-  out (c),a; переключение нужной страницы через порт
   ld de,(#5CF4); номер последнего считанного сектора
   ld hl, #8000
 set_sectors equ $+2
   LD BC, #0005
   call #3d13
-  ret
-
+  pop de
+  ld hl, #8000
 unpacker:
   include "zx7.a80"
 
