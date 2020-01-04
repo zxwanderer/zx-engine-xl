@@ -21,7 +21,7 @@ boot.end_screen:
 
   EMPTYTRD "cell3326.trd" ;create empty TRD image
 
-  include "../engine/routines/basic_boot_trd.asm"
+  include "../engine/basic_boot_trd.asm"
 
   SAVETRD "cell3326.trd", "boot.B", boot.Basic, boot.EndBasic - boot.Basic  
   SAVETRD "cell3326.trd","code.C", boot.begin_code, boot.end_code - boot.begin_code
