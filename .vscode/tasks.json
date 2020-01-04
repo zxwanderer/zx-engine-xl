@@ -29,13 +29,13 @@
         {
             "type": "shell",
             "label": "sjasmplus_parts", // делаем static.bin и dynamic.bin
-            "command": "./bin/sjasmplus --dos866 --nofakes --dirbol ./src/parts.asm",
+            "command": "./bin/sjasmplus --dos866 --nofakes --dirbol ./src/parts.asm --output-dir=.",
             "problemMatcher": "$errmatcher-sjasmplus"
         },
         {
             "type": "shell",
             "label": "sjasmplus_one", // склеиваем все parts (static.bin и dynamic.bin и dynamic.bin.zx7 ) в один бинарь
-            "command": "./bin/sjasmplus --dos866 --nofakes --dirbol one.asm",
+            "command": "./bin/sjasmplus --dos866 --nofakes --dirbol one.asm --output-dir=.",
             "problemMatcher": "$errmatcher-sjasmplus",
             "dependsOn": [
                 "zx7"

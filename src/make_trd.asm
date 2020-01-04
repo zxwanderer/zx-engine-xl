@@ -19,12 +19,12 @@ boot.begin_screen:
   INCBIN "../screen.bin.zx7"
 boot.end_screen:
 
-  EMPTYTRD "cell3326.trd" ;create empty TRD image
+  EMPTYTRD "../cell3326.trd" ;create empty TRD image
 
   include "./basic_boot_trd.asm"
 
-  SAVETRD "cell3326.trd", "boot.B", boot.Basic, boot.EndBasic - boot.Basic  
-  SAVETRD "cell3326.trd","code.C", boot.begin_code, boot.end_code - boot.begin_code
+  SAVETRD "../cell3326.trd", "boot.B", boot.Basic, boot.EndBasic - boot.Basic  
+  SAVETRD "../cell3326.trd","code.C", boot.begin_code, boot.end_code - boot.begin_code
 
 
   DISPLAY '-----------------------------------'
@@ -38,10 +38,10 @@ boot.end_screen:
   SLOT 3
   PAGE 7
   ORG #C000
-  SAVETRD "cell3326.trd","screen.C", boot.begin_screen, boot.end_screen - boot.begin_screen
+  SAVETRD "../cell3326.trd","screen.C", boot.begin_screen, boot.end_screen - boot.begin_screen
 
 
   SLOT 3
   PAGE 6
   ORG #C000
-  SAVETRD "cell3326.trd","music.C", boot.begin_music, boot.end_music - boot.begin_music
+  SAVETRD "../cell3326.trd","music.C", boot.begin_music, boot.end_music - boot.begin_music
