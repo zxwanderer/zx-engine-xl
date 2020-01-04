@@ -4,25 +4,7 @@ DEVICE 	ZXSPECTRUM128
 
 prog_start:
 // ------   code.bin
-    JP start_engine
-
-engine:
-    include "../engine/index.asm"
-
-player:
-    include "../engine/routines/PTSPLAY.asm"
-
-start_engine:
-    MemSetBank muzBank
-    ld HL, music_start
-    call INIT
-    ei
-pg:
-    halt
-    MemSetBank muzBank
-	call PLAY
-    MemSetBank gfxBank
-	jp pg
+    include "main.asm"
 prog_end:
     SAVEBIN "code.bin",prog_start, prog_end-prog_start
 
