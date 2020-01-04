@@ -1,6 +1,6 @@
  MODULE boot
 
-include "./defines.asm"
+include "../engine/defines.asm"
 
  macro	sectors datab,datae
    db 1,5,(1+high (datae-datab)) ; ld bc, #__05
@@ -73,7 +73,7 @@ set_sectors equ $+2
   pop de
   ld hl, #8000
 unpacker:
-  include "./routines/zx7.a80"
+  include "../engine/routines/zx7.a80"
 
   db "yo,lamer!"
   db #0D
