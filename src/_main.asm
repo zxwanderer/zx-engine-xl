@@ -18,7 +18,6 @@ engine:
 
 start_engine:
     MemSetBank muzBank
-    ld HL, music_start
     call Music.INIT
     ei
 pg:
