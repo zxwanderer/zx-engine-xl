@@ -24,3 +24,13 @@ music_start:
 music_end:
 
     SAVEBIN "music.bin",music_start, music_end-music_start
+
+// ------  scripts.bin
+    SLOT 3
+    PAGE 1
+    ORG #C000
+script_start:
+    include "../data/scripts.asm"
+script_end:
+
+    SAVEBIN "script.bin",script_start, script_end-script_start

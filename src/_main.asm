@@ -21,10 +21,11 @@ start_engine:
     MemSetBank muzBank
     call Music.INIT
     ei
-pg:
-    halt
-    MemSetBank gfxBank
-	jp pg
+	jp zxengine.start
+; pg:
+;     halt
+;     MemSetBank gfxBank
+; 	jp pg
 end_main: equ $
 
   DISPLAY '-----------------------------------'

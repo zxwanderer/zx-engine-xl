@@ -21,7 +21,7 @@
         {
             "type": "shell",
             "label": "zx7",
-            "command": "rm -f *.zx7; ./bin/zx7 code.bin; ./bin/zx7 music.bin; ./bin/zx7 screen.bin",
+            "command": "rm -f *.zx7; ./bin/zx7 code.bin; ./bin/zx7 music.bin; ./bin/zx7 screen.bin; ./bin/zx7 script.bin;",
             "dependsOn": [
                 "sjasmplus_parts"
             ],

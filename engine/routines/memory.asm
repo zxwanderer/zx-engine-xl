@@ -31,11 +31,17 @@
 
     MODULE Memory
 
+    MACRO MemSetScriptBank
+        ld a, scrBank
+        call Memory.setBank
+    ENDM
+
     MACRO MemSetBank bank_
         ld a, bank_
         call Memory.setBank
     ENDM
 
+; меняет BC
 setBank:
 	; and 7
 	ld (curBank),a

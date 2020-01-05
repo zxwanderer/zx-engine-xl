@@ -29,10 +29,12 @@ Line1:
   calc_sectors  begin_code, end_code, lenCode
   calc_sectors  begin_screen, end_screen, lenScreen
   calc_sectors  begin_music, end_music, lenMusic
+  calc_sectors  begin_script, end_script, lenScript
 
   DISPLAY "sectorsCode:   ", /D, lenCode
   DISPLAY "sectorsScreen: ", /D, lenScreen
   DISPLAY "sectorsMusic:  ", /D, lenMusic
+  DISPLAY "sectorsScript:  ", /D, lenScript
 
   LD A, lenCode
   LD DE, #6000
@@ -43,6 +45,9 @@ Line1:
   call load_and_unpack
 
   LD DE, muzBank*256 + lenMusic
+  call load_page
+
+  LD DE, scrBank*256 + lenScript
   call load_page
 
   JP #6000
