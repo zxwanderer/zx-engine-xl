@@ -34,7 +34,6 @@ goto_me:
 start:
   LD HL, START_SCRIPT
 process:
-  ; halt
   MemSetScriptBank
   LD A, (HL)
   AND A; _endByte -> 0
