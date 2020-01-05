@@ -1,4 +1,5 @@
 main:
+	di
 	xor a
 	out (#fe), a
 
@@ -14,7 +15,7 @@ main:
     JP start_engine
 
 engine:
-    include "../engine/index.asm"
+    include "../engine/main.asm"
 
 start_engine:
     MemSetBank muzBank
