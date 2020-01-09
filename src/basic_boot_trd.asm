@@ -31,10 +31,10 @@ Line1:
   calc_sectors  begin_music, end_music, lenMusic
   calc_sectors  begin_script, end_script, lenScript
 
-  DISPLAY "sectorsCode:   ", /D, lenCode
-  DISPLAY "sectorsScreen: ", /D, lenScreen
-  DISPLAY "sectorsMusic:  ", /D, lenMusic
-  DISPLAY "sectorsScript:  ", /D, lenScript
+  ; DISPLAY "sectorsCode:   ", /D, lenCode
+  ; DISPLAY "sectorsScreen: ", /D, lenScreen
+  ; DISPLAY "sectorsMusic:  ", /D, lenMusic
+  ; DISPLAY "sectorsScript:  ", /D, lenScript
 
   LD A, lenCode
   LD DE, #6000

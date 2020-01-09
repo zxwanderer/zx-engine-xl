@@ -7,7 +7,6 @@ prog_start:
 prog_end:
     SAVEBIN "code.bin",prog_start, prog_end-prog_start
 
-
 // ------  screen.bin
     ORG #4000
 screen_start:
@@ -34,3 +33,10 @@ script_start:
 script_end:
 
     SAVEBIN "script.bin",script_start, script_end-script_start
+
+  DISPLAY '-----------------------------------'
+  DISPLAY 'Code:   ', /D, prog_end-prog_start
+  DISPLAY 'Screen: ', /D, screen_end-screen_start
+  DISPLAY 'Music:  ', /D, music_end-music_start
+  DISPLAY 'Script: ', /D, script_end-script_start
+  DISPLAY '-----------------------------------'

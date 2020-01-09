@@ -34,13 +34,13 @@ boot.end_script:
   SAVETRD "../cell3326.trd","code.C", boot.begin_code, boot.end_code - boot.begin_code
 
 
-  DISPLAY '-----------------------------------'
-  DISPLAY 'Basic:  ', /D, boot.EndBasic - boot.Basic
-  DISPLAY 'Code:   ', /D, boot.end_code - boot.begin_code
-  DISPLAY 'Screen: ', /D, boot.end_screen - boot.begin_screen
-  DISPLAY 'Music:  ', /D, boot.end_music - boot.begin_music
-  DISPLAY 'Script:', /D, boot.end_script - boot.begin_script
-  DISPLAY '-----------------------------------'
+  ; DISPLAY '-----------------------------------'
+  ; DISPLAY 'Basic:  ', /D, boot.EndBasic - boot.Basic
+  ; DISPLAY 'Code:   ', /D, boot.end_code - boot.begin_code
+  ; DISPLAY 'Screen: ', /D, boot.end_screen - boot.begin_screen
+  ; DISPLAY 'Music:  ', /D, boot.end_music - boot.begin_music
+  ; DISPLAY 'Script:', /D, boot.end_script - boot.begin_script
+  ; DISPLAY '-----------------------------------'
 
 
   SLOT 3
