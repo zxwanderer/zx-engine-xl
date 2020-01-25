@@ -29,14 +29,10 @@ stack_im_begin:
   DEFS 100, 0
 stack_im: equ $
 
-stack_engine_begin:
-  DEFS 100, 0
-stack_engine: equ $
-
 end_main: equ $
 
   DISPLAY '-----------------------------------'
-  DISPLAY "Main size: ", /D, end_main-main
+  DISPLAY 'Engine size: ', /D, end_main-main, /D, ' free: ', /D, 0x7D7D-end_main
   DISPLAY '-----------------------------------'
 
 	org 0x7D7D
@@ -77,4 +73,8 @@ frame_counter: dw 0
 	align 256
 intTab:	ds 257
 
-	DISPLAY $
+stack_engine_begin:
+  DEFS 100, 0
+stack_engine: equ $
+
+  DISPLAY $

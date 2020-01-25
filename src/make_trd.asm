@@ -26,6 +26,14 @@ boot.begin_script:
   INCBIN "../script.bin.zx7"
 boot.end_script:
 
+// ------  text.bin
+    SLOT 3
+    PAGE 3
+    ORG #C000
+text_start:
+    include "./script.bin.zx7"
+text_end:
+
   EMPTYTRD "../cell3326.trd" ;create empty TRD image
 
   include "./basic_boot_trd.asm"

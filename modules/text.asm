@@ -7,14 +7,12 @@ MODULE text
       dw text
   ENDM
 
-; include "../core/routines/text68.asm"
-
 print_screen_me:
     PUSH HL
     CALL input.noKey
     LD D, 0
     LD E, 24
-    CALL screenfx.clear_window; очищаем экран
+    CALL screen.clear; очищаем экран
     POP HL
     mLDA; загрузили цвет
     PUSH HL
@@ -28,17 +26,7 @@ print_screen_me:
     POP HL
     JP zxengine.process
 
-; print_at_me:
-;   mLDE
-;   mLBC
-;   PUSH HL ; запомнили указатель скрипта
-;   PUSH BC
-;   POP HL
-;   CALL print_at
-;   POP HL
-;   JP zxengine.process
-
-  ; На входе 
+  ; На входе
   ; в DE координаты XY
   ; в HL - указатель на текст
 print_at:

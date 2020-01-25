@@ -34,16 +34,7 @@ sprite:
   db %11111111, %11111111
 
 clear_screen_bin:
-  LD HL, SCREEN_ADDR
-  LD DE, SCREEN_ADDR + 1
-  LD BC, 6144
-  LD (HL), %00000000
-  LDIR
-
-  LD HL, ATTR_ADDR
-  LD DE, ATTR_ADDR + 1
-  LD BC, 768
-  LD (HL), %00111000
-  LDIR
-
+  CALL screen.clear
+  LD A, %00111000
+  CALL screen.set_colors
   RET
