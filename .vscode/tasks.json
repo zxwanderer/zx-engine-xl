@@ -5,6 +5,21 @@
     "tasks": [
         {
             "type": "shell",
+            "label": "make_sna",
+            "command": "${workspaceFolder}/bin/sjasmplus --dos866 --nofakes --dirbol ${workspaceFolder}/src/make_sna.asm --output-dir=${workspaceFolder}/out",
+            "problemMatcher": "$errmatcher-sjasmplus",
+        },
+        {
+            "type": "shell",
+            "label": "run_sna",
+            "command": "open -a 'Fuse' ${workspaceFolder}/out/program.sna",
+            "dependsOn": [
+                "make_sna"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "type": "shell",
             "label": "sjasmplus_parts", // делаем static.bin и dynamic.bin
             "osx": {
                 "command": "./bin/sjasmplus --dos866 --nofakes --dirbol ./src/parts.asm --output-dir=."
