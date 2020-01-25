@@ -1,4 +1,10 @@
 main:
+	jp start_engine
+
+engine:
+    include "../engine/main.asm"
+
+start_engine:
 	di
 	ld sp, stack_engine
 	xor a
@@ -12,16 +18,12 @@ main:
 	ld (hl),high ngBegin
 	ldir
 	im 2
-    JP start_engine
 
-engine:
-    include "../engine/main.asm"
-
-start_engine:
     MemSetBank muzBank
     call Music.INIT
     ei
 	jp zxengine.start
+
 
 stack_im_begin:
   DEFS 100, 0
@@ -38,11 +40,6 @@ end_main: equ $
   DISPLAY '-----------------------------------'
 
 	org 0x7D7D
-
-; Deja Vu #05
-; 31 мая 1998
-;   Программирование  
-; CODING - Использование стека при разрешенных прерываниях.
 
 ngBegin:
 	di
