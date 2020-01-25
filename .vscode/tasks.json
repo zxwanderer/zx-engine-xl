@@ -22,7 +22,7 @@
             "type": "shell",
             "label": "sjasmplus_parts", // делаем static.bin и dynamic.bin
             "osx": {
-                "command": "./bin/sjasmplus --dos866 --nofakes --dirbol ./src/parts.asm --output-dir=."
+                "command": "./bin/sjasmplus --dos866 --nofakes --dirbol ./src/make_parts.asm --output-dir=."
             },
             "problemMatcher": "$errmatcher-sjasmplus"
         },
