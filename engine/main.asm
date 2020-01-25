@@ -3,5 +3,5 @@
     include "routines/memory.asm"
     include "routines/input.asm"
     include "routines/screen.asm"
-    ; include "modules/text.asm"
+    include "../modules/text.asm"
     include "core/engine.asm"
