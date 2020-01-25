@@ -1,5 +1,4 @@
 BEGIN_SCRIPT:
-  CallCode clear_screen_bin
   printScreen PAPER_BLACK, PEN_GREEN, HELLO_TXT
 LOOP_SCRIPT:
   CallCode random_border
@@ -33,9 +32,3 @@ sprite:
   db %11111111, %11111111
   db %11111111, %11111111
   db %11111111, %11111111
-
-clear_screen_bin:
-  CALL screen.clear
-  LD A, %00111000
-  CALL screen.set_colors
-  RET
