@@ -1,6 +1,6 @@
 BEGIN_SCRIPT:
   CallCode clear_screen_bin
-  printScreen PAPER_BLACK or PEN_GREEN, HELLO_TXT
+  printScreen PAPER_BLACK, PEN_GREEN, HELLO_TXT
 LOOP_SCRIPT:
   CallCode random_border
   GoTo LOOP_SCRIPT

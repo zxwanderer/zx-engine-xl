@@ -1,9 +1,9 @@
 MODULE text
 
 ; печать текста сверху экрана
-  MACRO printScreen color, text
+  MACRO printScreen paper, pen, text
       dw text.print_screen_me
-      db color
+      db paper or pen
       dw text
   ENDM
 
