@@ -41,6 +41,11 @@
         call Memory.setBank
     ENDM
 
+    MACRO MemSetMapBank
+        ld a, mapBank
+        call Memory.setBank
+    ENDM
+
     MACRO MemSetBank bank_
         ld a, bank_
         call Memory.setBank

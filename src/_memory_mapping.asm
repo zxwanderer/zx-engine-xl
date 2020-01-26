@@ -36,10 +36,26 @@ text_start:
     include "_text.asm"
 text_end:
 
+// ------  map.bin
+    SLOT 3
+    PAGE 4
+    ORG #C000
+map_start:
+    include "_map.asm"
+map_end:
+
+// ------  graph.bin
+    SLOT 3
+    PAGE 0
+    ORG #C000
+graph_start:
+    include "_graph.asm"
+graph_end:
+
   DISPLAY '-----------------------------------'
-;   DISPLAY 'Code:   ', /D, prog_end-prog_start, ' free: ', /D, 0x8000 - prog_end
-;   DISPLAY 'Screen: ', /D, screen_end-screen_start, ' free: ', /D, 0x10000 - screen_end
   DISPLAY 'Music:  ', /D, music_end-music_start, ' free: ', /D, 0x10000 - music_end
   DISPLAY 'Script: ', /D, script_end-script_start, ' free: ', /D, 0x10000 - script_end
   DISPLAY 'Text:   ', /D, text_end-text_start, ' free: ', /D, 0x10000 - text_end
+  DISPLAY 'Map:    ', /D, map_end-map_start, ' free: ', /D, 0x10000 - map_end
+  DISPLAY 'Graph:  ', /D, graph_end-graph_start, ' free: ', /D, 0x10000 - graph_end
   DISPLAY '-----------------------------------'
