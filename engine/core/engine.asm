@@ -55,4 +55,10 @@ process:
 process_goto:
   JP #0000 // в DE - указатель на данные
 
+; различные переменные для скриптов
+varsTab:
+  DUP 256
+    defb 00
+  EDUP
+
 ENDMODULE

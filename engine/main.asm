@@ -3,5 +3,7 @@
     include "routines/memory.asm"
     include "routines/input.asm"
     include "routines/screen.asm"
+    include "routines/tiles16.asm"
+    include "../modules/defines/vars.asm"
     include "../modules/text.asm"
     include "core/engine.asm"
