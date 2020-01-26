@@ -1,34 +1,8 @@
 BEGIN_SCRIPT:
   printScreen PAPER_BLACK, PEN_GREEN, HELLO_TXT
+  CallCode copy_map
 LOOP_SCRIPT:
   CallCode random_border
+  CallCode show_map
   GoTo LOOP_SCRIPT
   defb _endByte
-
-random_border:
-  ld a, r
-  AND %00000111
-  out(#fe),a
-  ret
-
-MAP:
-  db 00
-
-sprite:
-  db %11111111, %11111111
-  db %11111111, %11111111
-  db %11111111, %11111111
-  db %11111111, %11111111
-  db %11111111, %11111111
-  db %11111111, %11111111
-  db %11111111, %11111111
-  db %11111111, %11111111
-
-  db %11111111, %11111111
-  db %11111111, %11111111
-  db %11111111, %11111111
-  db %11111111, %11111111
-  db %11111111, %11111111
-  db %11111111, %11111111
-  db %11111111, %11111111
-  db %11111111, %11111111

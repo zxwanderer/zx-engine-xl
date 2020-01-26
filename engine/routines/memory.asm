@@ -41,6 +41,11 @@
         call Memory.setBank
     ENDM
 
+    MACRO MemSetGraphBank
+        ld a, gfxBank
+        call Memory.setBank
+    ENDM
+
     MACRO MemSetMapBank
         ld a, mapBank
         call Memory.setBank
