@@ -41,6 +41,5 @@ stack_engine_begin:
   DEFS 50, 0
 stack_engine: equ $
 
-  DISPLAY '-----------------------------------'
   DISPLAY "Im2 addr begin: ", INIT_VEC, " end: ", $, " Free: ", /D, 0x8000 - $
   DISPLAY '-----------------------------------'

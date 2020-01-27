@@ -38,6 +38,5 @@ im2_routines:
 
 end_main: equ $
 
-  DISPLAY '-----------------------------------'
   DISPLAY 'Engine size: ', /D, end_main-main, /D, ' free: ', /D, INIT_VEC-end_main
   DISPLAY '-----------------------------------'
