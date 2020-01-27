@@ -6,58 +6,62 @@
         {
             "type": "shell",
             "label": "make_sna",
-            "command": "${workspaceFolder}/bin/sjasmplus --dos866 --nofakes --dirbol ${workspaceFolder}/src/make_sna.asm --output-dir=${workspaceFolder}/out",
+            "osx": {
+                "command": "${workspaceFolder}/bin/osx/sjasmplus --dos866 --nofakes --dirbol ${workspaceFolder}/src/make_sna.asm --output-dir=${workspaceFolder}/out",
+            },
             "problemMatcher": "$errmatcher-sjasmplus",
         },
         {
             "type": "shell",
             "label": "run_sna",
-            "command": "open -a 'Fuse' ${workspaceFolder}/out/program.sna",
+            "osx":{
+                "command": "open -a 'Fuse' ${workspaceFolder}/out/program.sna",
+            },
             "dependsOn": [
                 "make_sna"
             ],
             "problemMatcher": []
         },
-        {
-            "type": "shell",
-            "label": "sjasmplus_parts", // делаем static.bin и dynamic.bin
-            "osx": {
-                "command": "./bin/sjasmplus --dos866 --nofakes --dirbol ./src/make_parts.asm --output-dir=."
-            },
-            "problemMatcher": "$errmatcher-sjasmplus"
-        },
-        {
-            "type": "shell",
-            "label": "run_trd",
-            "osx": {
-                "command": "open -a 'Unreal Speccy Portable' cell3326.trd --args -m 0 "
-            },
-            "dependsOn": [
-                "make_trd"
-            ],
-            "problemMatcher": []
-        },
-        {
-            "type": "shell",
-            "label": "zx7",
-            "osx": {
-                "command": "rm -f *.zx7; ./bin/zx7 code.bin; ./bin/zx7 music.bin; ./bin/zx7 screen.bin; ./bin/zx7 script.bin;"
-            },
-            "dependsOn": [
-                "sjasmplus_parts"
-            ],
-            "problemMatcher": []
-        },
-        {
-            "type": "shell",
-            "label": "make_trd",
-            "osx": {
-                "command": "./bin/sjasmplus --dos866 --nofakes --dirbol src/make_trd.asm"
-            },
-            "problemMatcher": "$errmatcher-sjasmplus",
-            "dependsOn": [
-                "zx7"
-            ],
-        },
+        // {
+        //     "type": "shell",
+        //     "label": "sjasmplus_parts", // делаем static.bin и dynamic.bin
+        //     "osx": {
+        //         "command": "./bin/sjasmplus --dos866 --nofakes --dirbol ./src/make_parts.asm --output-dir=."
+        //     },
+        //     "problemMatcher": "$errmatcher-sjasmplus"
+        // },
+        // {
+        //     "type": "shell",
+        //     "label": "run_trd",
+        //     "osx": {
+        //         "command": "open -a 'Unreal Speccy Portable' cell3326.trd --args -m 0 "
+        //     },
+        //     "dependsOn": [
+        //         "make_trd"
+        //     ],
+        //     "problemMatcher": []
+        // },
+        // {
+        //     "type": "shell",
+        //     "label": "zx7",
+        //     "osx": {
+        //         "command": "rm -f *.zx7; ./bin/zx7 code.bin; ./bin/zx7 music.bin; ./bin/zx7 screen.bin; ./bin/zx7 script.bin;"
+        //     },
+        //     "dependsOn": [
+        //         "sjasmplus_parts"
+        //     ],
+        //     "problemMatcher": []
+        // },
+        // {
+        //     "type": "shell",
+        //     "label": "make_trd",
+        //     "osx": {
+        //         "command": "./bin/sjasmplus --dos866 --nofakes --dirbol src/make_trd.asm"
+        //     },
+        //     "problemMatcher": "$errmatcher-sjasmplus",
+        //     "dependsOn": [
+        //         "zx7"
+        //     ],
+        // },
     ]
 }
