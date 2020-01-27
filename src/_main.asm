@@ -1,12 +1,12 @@
 main:
 	JP start_engine
 
+INIT_VEC equ 0x7D7D
+
 ; к сожалению макросы не прописываются глобально при компиляции,
-; поэтому приходится делать include до их вызова в коде
-; (?) может делать два файла - файл макросов (header) и файл их использования?
+; поэтому приходится делать два файла - файл макросов (header) и файл их использования
 
     include "../engine/defines.asm"
-	include "./defines.asm"
     include "../engine/routines/memory_h.asm"
 	include "../engine/routines/im2_h.asm"
 
