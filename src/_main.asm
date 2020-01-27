@@ -7,8 +7,9 @@ INIT_VEC equ 0x7D7D
 ; поэтому приходится делать два файла - файл макросов (header) и файл их использования
 
     include "../engine/defines.asm"
-    include "../engine/routines/memory_h.asm"
-	include "../engine/routines/im2_h.asm"
+    include "../engine/routines/utils/memory_h.asm"
+	include "../engine/routines/utils/im2_h.asm"
+    include "../engine/core/engine_h.asm"
 
 start_engine:
 	di
@@ -34,8 +35,9 @@ im2_routines:
     CALL Music.PLAY
 	RET
 
-    include "../engine/routines/memory.asm"
-    include "../engine/routines/math.asm"
+    include "../engine/routines/utils/memory.asm"
+    include "../engine/routines/utils/math.asm"
+    include "../engine/core/engine.asm"
 
 end_main: equ $
 

@@ -6,7 +6,7 @@ PLAY: equ Player.PLAY
     ENDMODULE
 
     MODULE Player
-    include "../../engine/routines/PTSPLAY.asm"
+    include "../../engine/routines/utils/PTSPLAY.asm"
     ENDMODULE
 
 music:
