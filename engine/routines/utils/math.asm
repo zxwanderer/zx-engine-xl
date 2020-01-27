@@ -102,15 +102,15 @@ MODULE math
 ; в адрес в области атрибутов
 ; Вход: DE - адрес в экранной области
 ; Выход: DE - адрес в области атрибутов
-; addr_to_attr:
-; 	LD A,D
-; 	AND #18
-; 	RRCA
-; 	RRCA
-; 	RRCA
-; 	ADD A,ATTR_ADDR/#100
-; 	LD D,A
-; 	RET
+addr_to_attr:
+	LD A,D
+	AND #18
+	RRCA
+	RRCA
+	RRCA
+	ADD A,ATTR_ADDR/#100
+	LD D,A
+	RET
 
 ; перемещаемся на 1 линию в знакоместе ниже
 ; Вход: DE- экранный адрес

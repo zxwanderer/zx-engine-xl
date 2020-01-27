@@ -1,7 +1,8 @@
-  ; CallCode black_border
-  ; printScreen PAPER_BLACK, PEN_GREEN, HELLO_TXT
-  ; CallCode copy_map
+  CallCode black_border
+  PrintScreen PAPER_BLACK, PEN_GREEN, HELLO_TXT
+  CallCode copy_map
+  CallCode show_map
 LOOP_SCRIPT:
-  ; CallCode show_map
+  CallCode random_border
   GoTo LOOP_SCRIPT
   defb _endByte

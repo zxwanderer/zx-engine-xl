@@ -5,6 +5,12 @@ black_border:
   out(#fe),a
   ret
 
+random_border:
+  LD A, R
+  AND %00000111
+  out(#fe),a
+  ret
+
 copy_map:
   MemSetMapBank
   LD HL, MAP_SET

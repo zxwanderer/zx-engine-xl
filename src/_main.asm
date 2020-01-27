@@ -9,6 +9,7 @@ INIT_VEC equ 0x7D7D
     include "../engine/defines.asm"
     include "../engine/routines/utils/memory_h.asm"
 	include "../engine/routines/utils/im2_h.asm"
+	include "../engine/routines/text_h.asm"
     include "../engine/core/engine_h.asm"
 
 start_engine:
@@ -23,11 +24,6 @@ start_engine:
     call Music.INIT
     ei
 
-inf_loop:
-	; LD A,R
-	; AND %00000111
-	; OUT(#FE),A
-    ; JP inf_loop
 	JP zxengine.start
 
 im2_routines:
@@ -37,7 +33,17 @@ im2_routines:
 
     include "../engine/routines/utils/memory.asm"
     include "../engine/routines/utils/math.asm"
+    include "../engine/routines/utils/input.asm"
+    include "../engine/routines/utils/screen.asm"
+    include "../engine/routines/text.asm"
+    include "../engine/routines/tiles16.asm"
+    include "../engine/routines/view.asm"
     include "../engine/core/engine.asm"
+
+; Кастомные вызовы из скриптов через CallCode 
+; Если вызываемая подпрограмма использует переключение страничек, ее нельзя
+; держать в той же страничке :) Поэтому их приходится размещать тут, в верхней памяти.
+    include "../scripts/scripts_binaries.asm"
 
 end_main: equ $
 

@@ -1,12 +1,5 @@
 MODULE text
 
-; печать текста сверху экрана
-  MACRO printScreen paper, pen, text
-      dw text.print_screen_me
-      db paper or pen
-      dw text
-  ENDM
-
 print_screen_me:
     PUSH HL
     CALL input.noKey
