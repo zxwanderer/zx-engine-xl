@@ -7,7 +7,7 @@
             "type": "shell",
             "label": "make_sna",
             "osx": {
-                "command": "${workspaceFolder}/bin/osx/sjasmplus --dos866 --nofakes --dirbol ${workspaceFolder}/src/make_sna.asm --output-dir=${workspaceFolder}/out",
+                "command": "${workspaceFolder}/engine/bin/osx/sjasmplus --dos866 --nofakes --dirbol ${workspaceFolder}/src/make_sna.asm --output-dir=${workspaceFolder}/out",
             },
             "problemMatcher": "$errmatcher-sjasmplus",
         },
