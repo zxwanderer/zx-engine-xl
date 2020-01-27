@@ -1,4 +1,12 @@
 main:
+	JP start_engine
+
+; к сожалению макросы не прописываются глобально при компиляции,
+; поэтому приходится делать include до их вызова в коде
+; (?) может делать два файла - файл макросов (header) и файл их использования?
+
+    include "../engine/defines.asm"
+    include "../engine/routines/memory_h.asm"
 
 start_engine:
 	di
@@ -15,27 +23,28 @@ start_engine:
 	ldir
 	im 2
 
+    MemSetBank muzBank
+    call Music.INIT
+    ei
+
 inf_loop:
+	LD A,R
+	AND %00000111
+	OUT(#FE),A
     JP inf_loop
-    ; MemSetBank muzBank
-    ; call Music.INIT
-    ; ei
 	; jp zxengine.start
 
+im2_routines:
+	MemSetBank muzBank
+    CALL Music.PLAY
+	RET
 
-; stack_im_begin:
-;   DEFS 100, 0
-; stack_im: equ $
+    include "../engine/routines/memory.asm"
 
 end_main: equ $
 
   DISPLAY '-----------------------------------'
   DISPLAY 'Engine size: ', /D, end_main-main, /D, ' free: ', /D, 0x7D7D-end_main
   DISPLAY '-----------------------------------'
-
-
-stack_engine_begin:
-  DEFS 100, 0
-stack_engine: equ $
 
   DISPLAY $

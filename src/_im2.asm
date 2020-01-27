@@ -9,18 +9,17 @@ ngBegin:
 	ex af, af'
 	push af,bc,de,hl,ix,iy
 
-	; ld a,(Memory.curBank)
-	; push af
+	ld a,(Memory.curBank)
+	push af
 
 	LD HL, (frame_counter)
   	INC HL
   	LD (frame_counter), HL
 
-	; MemSetBank muzBank
-    ; call Music.PLAY
-	
-	; pop	af
-	; call Memory.setBank
+	CALL im2_routines
+
+	pop	af
+	call Memory.setBank
 
 	pop iy,ix,hl,de,bc,af
 	ex af, af'
@@ -40,5 +39,9 @@ stack_im_begin:
   DEFS 50, 0
 stack_im: equ $
 
-  DISPLAY $, " Free: ", /D, 0x8000 - $
+stack_engine_begin:
+  DEFS 50, 0
+stack_engine: equ $
+
+  DISPLAY "Im2 addr end: ", $, " Free: ", /D, 0x8000 - $
 
