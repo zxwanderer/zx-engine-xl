@@ -6,7 +6,9 @@ main:
 ; (?) может делать два файла - файл макросов (header) и файл их использования?
 
     include "../engine/defines.asm"
+	include "./defines.asm"
     include "../engine/routines/memory_h.asm"
+	include "../engine/routines/im2_h.asm"
 
 start_engine:
 	di
@@ -14,14 +16,7 @@ start_engine:
 	xor a
 	out (#fe), a
 
-	ld hl,intTab
-	ld de,intTab+1
-	ld bc,0x100
-	ld a,h
-	ld i,a
-	ld (hl),high ngBegin
-	ldir
-	im 2
+	SetIM2 INIT_VEC
 
     MemSetBank muzBank
     call Music.INIT
@@ -44,7 +39,5 @@ im2_routines:
 end_main: equ $
 
   DISPLAY '-----------------------------------'
-  DISPLAY 'Engine size: ', /D, end_main-main, /D, ' free: ', /D, 0x7D7D-end_main
+  DISPLAY 'Engine size: ', /D, end_main-main, /D, ' free: ', /D, INIT_VEC-end_main
   DISPLAY '-----------------------------------'
-
-  DISPLAY $

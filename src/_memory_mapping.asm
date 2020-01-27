@@ -6,8 +6,9 @@ prog_start:
     include "_main.asm"
 prog_end:
 
+	org INIT_VEC
 im2_start:
-    include "_im2.asm"
+    include "../engine/routines/im2.asm"
 im2_end:
 
 // ------  music.bin

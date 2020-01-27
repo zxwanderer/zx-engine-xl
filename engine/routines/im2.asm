@@ -1,5 +1,3 @@
-	org 0x7D7D
-
 ngBegin:
 	di
 	ld (sp_saved_im+1), sp
@@ -43,5 +41,6 @@ stack_engine_begin:
   DEFS 50, 0
 stack_engine: equ $
 
-  DISPLAY "Im2 addr end: ", $, " Free: ", /D, 0x8000 - $
-
+  DISPLAY '-----------------------------------'
+  DISPLAY "Im2 addr begin: ", INIT_VEC, " end: ", $, " Free: ", /D, 0x8000 - $
+  DISPLAY '-----------------------------------'
