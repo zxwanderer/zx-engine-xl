@@ -35,6 +35,7 @@ im2_routines:
 	RET
 
     include "../engine/routines/memory.asm"
+    include "../engine/routines/math.asm"
 
 end_main: equ $
 
