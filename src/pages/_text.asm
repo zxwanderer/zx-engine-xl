@@ -9,4 +9,3 @@ p68_font_end: equ $
 _text_stop: equ $
     DISPLAY 'Font addr begin: ', p68_font, ' font size: ', /D, p68_font_end-p68_font
     DISPLAY '-----------------------------------'
-

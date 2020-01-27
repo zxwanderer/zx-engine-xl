@@ -24,11 +24,11 @@ start_engine:
     ei
 
 inf_loop:
-	LD A,R
-	AND %00000111
-	OUT(#FE),A
-    JP inf_loop
-	; jp zxengine.start
+	; LD A,R
+	; AND %00000111
+	; OUT(#FE),A
+    ; JP inf_loop
+	JP zxengine.start
 
 im2_routines:
 	MemSetBank muzBank
