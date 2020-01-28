@@ -33,12 +33,19 @@
 
 ; меняет BC
 setBank:
-	; and 7
 	ld (curBank),a
-	; or 0x10
+cur_scr: 
+	; or %00000000
+	or 0x10
 	ld bc,0x7ffd
 	out (c),a
 	ret
+
+flipScreen:
+	LD A, (cur_scr+1)
+	XOR %00001000
+	LD (cur_scr+1), A
+	RET
 
 curBank:    db 0
 

@@ -13,6 +13,11 @@
         call Memory.setBank
     ENDM
 
+    MACRO MemSetMuzBank
+        ld a, muzBank
+        call Memory.setBank
+    ENDM
+
     MACRO MemSetMapBank
         ld a, mapBank
         call Memory.setBank

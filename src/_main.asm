@@ -27,8 +27,14 @@ start_engine:
 	JP zxengine.start
 
 im2_routines:
-	MemSetBank muzBank
+    MemSetGraphBank
+    DUP 30
+    CALL draw_sprite
+    EDUP
+
+	MemSetMuzBank
     CALL Music.PLAY
+
 	RET
 
     include "../engine/routines/utils/memory.asm"

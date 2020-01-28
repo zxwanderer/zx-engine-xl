@@ -1,7 +1,16 @@
 ; бинарные процедуры вызываемые из скриптов которые требуют переключения памяти
+wait:
+  HALT
+  ret
+
 black_border:
   XOR A
   AND %00000111
+  out(#fe),a
+  ret
+
+blue_border:
+  LD A, 1
   out(#fe),a
   ret
 
@@ -22,4 +31,67 @@ show_map:
   CALL View.draw
   ret
 
-last_sprite: defb 0
+draw_sprite:
+    LD HL, (view_addr)
+    LD DE, (screen_addr)
+    LD A,(HL)
+    INC A
+    CP #98
+    JR C, no_reset_a
+    LD A, #90
+
+no_reset_a:
+    LD (HL), A
+    INC HL
+    LD (view_addr), HL
+
+    call Tiles16.spr_index_to_addr
+    call Tiles16.show_tile_on_map
+
+    LD A, (pos_x)
+    DEC A
+    JR Z, reset_loop
+
+no_reset_loop:
+    LD (pos_x), A
+    LD DE, (screen_addr)
+    Tiles16.NEXT_TILE_POS_RIGHT
+    LD (screen_addr), DE
+    RET
+
+reset_loop:
+    LD A, (pos_y)
+    DEC A
+    JR Z, reset_pos_y_x
+
+reset_pos_x:
+    LD (pos_y), A
+    LD A, max_x
+    LD (pos_x), A
+    LD DE, (screen_addr_begin)
+    Tiles16.NEXT_TITLE_POS_DOWN
+    LD (screen_addr_begin), DE
+    LD (screen_addr), DE
+    RET
+
+reset_pos_y_x:
+    LD DE, SCREEN_ADDR
+    LD (screen_addr_begin), DE
+    LD (screen_addr), DE
+    LD A, max_y
+    LD (pos_y), A
+    LD A, max_x
+    LD (pos_x), A
+    LD HL, View.buffer
+    LD (view_addr), HL
+    ; CALL Memory.flipScreen
+    RET
+
+max_x equ 16; scrWidth
+max_y equ 11 ; scrHeight
+
+pos_x: defb max_x
+pos_y: defb max_y
+view_addr: defw View.buffer
+screen_addr: defw SCREEN_ADDR
+screen_addr_begin: defw SCREEN_ADDR
