@@ -1,4 +1,5 @@
 ; бинарные процедуры вызываемые из скриптов которые требуют переключения памяти
+
 wait:
   HALT
   ret
@@ -40,12 +41,21 @@ show_map:
 draw_sprite:
     LD HL, (view_addr)
     LD DE, (screen_addr)
-    LD A,(HL)
-    INC A
-    CP #98
-    JR C, no_reset_a
-    LD A, #90
 
+    LD A,(HL)
+no_get_a:
+    INC A
+    CP #98 ; #B4 ;#98
+    JR C, no_reset_a
+
+    LD A, R
+    CP #75
+    JR C, set_default_a
+    LD A, #95
+    JR no_reset_a
+
+set_default_a:
+    LD A, #90 ; #B0 ;#90
 no_reset_a:
     LD (HL), A
     INC HL
@@ -81,7 +91,7 @@ reset_pos_x:
     RET
 
 reset_pos_y_x:
-    LD DE, SCREEN_ADDR
+    LD DE, screen_addr_default
     LD (screen_addr_begin), DE
     LD (screen_addr), DE
     LD A, max_y
@@ -96,12 +106,13 @@ reset_pos_y_x:
 max_x equ 16; scrWidth
 max_y equ 11 ; scrHeight
 view_addr_default equ temp_buffer ;View.buffer
+screen_addr_default: equ SCREEN_ADDR
 
 pos_x: defb max_x
 pos_y: defb max_y
 view_addr: defw view_addr_default
-screen_addr: defw SCREEN_ADDR
-screen_addr_begin: defw SCREEN_ADDR
+screen_addr: defw screen_addr_default
+screen_addr_begin: defw screen_addr_default
 
 temp_buffer:
   defb #90, #90, #90, #90, #90, #90, #90, #90, #90, #90, #90, #90, #90, #90, #90, #90
