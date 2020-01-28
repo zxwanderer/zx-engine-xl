@@ -3,6 +3,12 @@ wait:
   HALT
   ret
 
+clear_screen:
+  xor a
+  call screen.set_colors
+  call screen.clear
+  ret
+
 black_border:
   XOR A
   AND %00000111
@@ -82,16 +88,30 @@ reset_pos_y_x:
     LD (pos_y), A
     LD A, max_x
     LD (pos_x), A
-    LD HL, View.buffer
+    LD HL, view_addr_default
     LD (view_addr), HL
     ; CALL Memory.flipScreen
     RET
 
 max_x equ 16; scrWidth
 max_y equ 11 ; scrHeight
+view_addr_default equ temp_buffer ;View.buffer
 
 pos_x: defb max_x
 pos_y: defb max_y
-view_addr: defw View.buffer
+view_addr: defw view_addr_default
 screen_addr: defw SCREEN_ADDR
 screen_addr_begin: defw SCREEN_ADDR
+
+temp_buffer:
+  defb #90, #90, #90, #90, #90, #90, #90, #90, #90, #90, #90, #90, #90, #90, #90, #90
+  defb #90, #90, #90, #90, #90, #90, #90, #90, #90, #90, #90, #90, #90, #90, #90, #90
+  defb #90, #90, #90, #90, #90, #90, #90, #90, #90, #90, #90, #90, #90, #90, #90, #90
+  defb #90, #90, #90, #90, #90, #90, #90, #90, #90, #90, #90, #90, #90, #90, #90, #90
+  defb #90, #90, #90, #90, #90, #90, #90, #90, #90, #90, #90, #90, #90, #90, #90, #90
+  defb #90, #90, #90, #90, #90, #90, #90, #90, #90, #90, #90, #90, #90, #90, #90, #90
+  defb #90, #90, #90, #90, #90, #90, #90, #90, #90, #90, #90, #90, #90, #90, #90, #90
+  defb #90, #90, #90, #90, #90, #90, #90, #90, #90, #90, #90, #90, #90, #90, #90, #90
+  defb #90, #90, #90, #90, #90, #90, #90, #90, #90, #90, #90, #90, #90, #90, #90, #90
+  defb #90, #90, #90, #90, #90, #90, #90, #90, #90, #90, #90, #90, #90, #90, #90, #90
+  defb #90, #90, #90, #90, #90, #90, #90, #90, #90, #90, #90, #90, #90, #90, #90, #90

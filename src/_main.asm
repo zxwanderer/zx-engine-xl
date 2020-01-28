@@ -28,7 +28,7 @@ start_engine:
 
 im2_routines:
     MemSetGraphBank
-    DUP 30
+    DUP 39
     CALL draw_sprite
     EDUP
 

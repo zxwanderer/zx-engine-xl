@@ -1,6 +1,7 @@
   CallCode black_border
+  CallCode clear_screen
   ; PrintScreen PAPER_BLACK, PEN_GREEN, HELLO_TXT
-  CallCode copy_map
+  ; CallCode copy_map
   ; CallCode show_map
 LOOP_SCRIPT:
   CallCode blue_border

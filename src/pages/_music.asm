@@ -10,4 +10,5 @@ PLAY: equ Player.PLAY
     ENDMODULE
 
 music:
+    incbin "../../data/music/EA - Epilogue (ea2org) (2020).pt3"
     incbin "../../data/music/keyjee.pt3"
