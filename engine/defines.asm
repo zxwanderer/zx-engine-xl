@@ -37,8 +37,8 @@ scrBank equ #11   //1 - скрипты
 textBank equ #13  //3 - страница текстовых сообщений
 mapBank  equ #14  //4 - карта
                   //5 - дублирование #4000
-                  //6
-muzBank  equ #17  //7 - screen ?
+muzBank  equ #16  //6 - музыка и FX
+                  //7 - shadow screen ?
 
 MACRO mLDA
   LD A, (HL)

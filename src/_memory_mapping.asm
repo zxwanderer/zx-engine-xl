@@ -11,21 +11,30 @@ im2_start:
     include "../engine/routines/utils/im2.asm"
 im2_end:
 
-// ------  music.bin
+// ------  graph.bin
+    SLOT 2
+    PAGE 2
+    ORG #8000
+graph_start:
+    include "./pages/_graph.asm"
+graph_end:
+
+// ------  shadow.bin
     SLOT 3
     PAGE 7
+    ORG #C000
+shadow_start:
+    include "./pages/_shadow.asm"
+shadow_end:
+
+
+// ------  music.bin
+    SLOT 3
+    PAGE 6
     ORG #C000
 music_start:
     include "./pages/_music.asm"
 music_end:
-
-// ------  graph.bin
-    SLOT 3
-    PAGE 0
-    ORG #C000
-graph_start:
-    include "./pages/_graph.asm"
-graph_end:
 
 // ------  map.bin
     SLOT 3

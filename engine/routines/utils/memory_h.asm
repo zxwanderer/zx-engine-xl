@@ -13,6 +13,20 @@
         call Memory.setBank
     ENDM
 
+    MACRO MemSetShadowBank
+        LD A, (Memory.cur_scr+1)
+        AND %00001000
+        ; JR NC, _set_5
+; _set_7:        
+        ; LD A, #17
+        ; call Memory.setBank
+        ; RET
+_set_5:        
+        LD A, #15
+        call Memory.setBank
+        RET
+    ENDM
+
     MACRO MemSetMuzBank
         ld a, muzBank
         call Memory.setBank

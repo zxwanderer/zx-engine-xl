@@ -27,7 +27,7 @@ start_engine:
 	JP zxengine.start
 
 im2_routines:
-    MemSetGraphBank
+    ; MemSetShadowBank
     DUP 39
     CALL draw_sprite
     EDUP

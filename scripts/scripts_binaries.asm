@@ -43,19 +43,20 @@ draw_sprite:
     LD DE, (screen_addr)
 
     LD A,(HL)
-no_get_a:
+; no_get_a:
     INC A
-    CP #98 ; #B4 ;#98
-    JR C, no_reset_a
+    CP #FF ; #B4 ;#98
+    JR NZ, no_reset_a
 
     LD A, R
-    CP #75
-    JR C, set_default_a
-    LD A, #95
-    JR no_reset_a
+    ; CP #75
+    ; JR C, set_default_a
+    ; ; LD A, #95
+    ; JR no_reset_a
 
-set_default_a:
-    LD A, #90 ; #B0 ;#90
+    ; LD A,R
+; set_default_a:
+;     LD A, 0; #90 ; #B0 ;#90
 no_reset_a:
     LD (HL), A
     INC HL
@@ -106,7 +107,7 @@ reset_pos_y_x:
 max_x equ 16; scrWidth
 max_y equ 11 ; scrHeight
 view_addr_default equ temp_buffer ;View.buffer
-screen_addr_default: equ SCREEN_ADDR
+screen_addr_default: equ SCREEN_ADDR; SHADOW_SCREEN ;SCREEN_ADDR
 
 pos_x: defb max_x
 pos_y: defb max_y
