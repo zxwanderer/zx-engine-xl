@@ -51,7 +51,7 @@ no_get_a:
     LD A, R
     CP #75
     JR C, set_default_a
-    LD A, #95
+    LD A, #90
     JR no_reset_a
 
 set_default_a:
