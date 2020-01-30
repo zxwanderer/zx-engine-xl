@@ -31,7 +31,8 @@ scrWidth equ 16
 mapSize equ 32
 
 ; mempages
-gfxBank equ #10   //0 - графика
+; gfxBank equ #10 //0 - графика
+                  //0
 scrBank equ #11   //1 - скрипты
                   //2 - дублирование #8000
 textBank equ #13  //3 - страница текстовых сообщений

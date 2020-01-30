@@ -27,10 +27,10 @@ start_engine:
 	JP zxengine.start
 
 im2_routines:
-    MemSetGraphBank
-    DUP 39
-    CALL draw_sprite
-    EDUP
+    ; MemSetGraphBank
+    ; DUP 39
+    ; CALL draw_sprite
+    ; EDUP
 
 	MemSetMuzBank
     CALL Music.PLAY

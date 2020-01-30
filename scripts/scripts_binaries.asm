@@ -34,7 +34,7 @@ copy_map:
   ret
 
 show_map:
-  MemSetGraphBank
+  ; MemSetGraphBank
   CALL View.draw
   ret
 

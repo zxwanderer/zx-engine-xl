@@ -8,10 +8,10 @@
         call Memory.setBank
     ENDM
 
-    MACRO MemSetGraphBank
-        ld a, gfxBank
-        call Memory.setBank
-    ENDM
+    ; MACRO MemSetGraphBank
+    ;     ld a, gfxBank
+    ;     call Memory.setBank
+    ; ENDM
 
     MACRO MemSetMuzBank
         ld a, muzBank
