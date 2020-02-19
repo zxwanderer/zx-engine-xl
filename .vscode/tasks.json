@@ -22,7 +22,7 @@
             "type": "shell",
             "label": "run_sna",
             "osx": {
-                "command": "open -a 'Fuse' ${workspaceFolder}/out/program.sna"
+                "command": "open -a 'UnrealSpeccyPortable' ${workspaceFolder}/out/program.sna"
             },
             "linux": {
                 "command": "flatpak run net.sf.fuse_emulator/x86_64/stable ${workspaceFolder}/out/program.sna"
