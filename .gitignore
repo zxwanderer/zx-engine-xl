@@ -4,3 +4,4 @@
 code.bin
 *.bin.zx7
 *.trd
+.tmp/
