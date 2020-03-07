@@ -12,6 +12,9 @@ INIT_VEC equ 0x7D7D
 	include "../engine/routines/text_h.asm"
     include "../engine/core/engine_h.asm"
 
+    include "./logic/defines/Point.asm"
+    include "./logic/defines/Hero.asm"
+
 start_engine:
 	di
 	ld sp, stack_engine
@@ -44,7 +47,11 @@ im2_routines:
     include "../engine/routines/text.asm"
     include "../engine/routines/tiles16.asm"
     include "../engine/routines/view.asm"
+    include "../engine/routines/map.asm"    
     include "../engine/core/engine.asm"
+
+    include "./logic/heroes.asm"
+    include "./logic/entities.asm"
 
 ; Кастомные вызовы из скриптов через CallCode 
 ; Если вызываемая подпрограмма использует переключение страничек, ее нельзя
