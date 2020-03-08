@@ -13,6 +13,7 @@ ActiveItem_ptr_ground:
 
 ; ------- инициализация на карте всех персонажей из CHAR_SET
 initHeroes:
+  MemSetMapBank
   LD HL, CHARS_SET
 PersonagesNum_ptr:
   LD B, PersonagesNum
@@ -37,7 +38,7 @@ init_loop: ; пробегаемся по всем персонажам и раз
   POP BC
   ADD HL, DE
   DJNZ init_loop
-  JP firstChar
+  JR firstChar
 
 ; ------- циклический переход на следующего героя ( если был последний то на первого )
 loopNextChar:

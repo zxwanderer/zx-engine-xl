@@ -1,5 +1,9 @@
 ; бинарные процедуры вызываемые из скриптов которые требуют переключения памяти
 
+game_init:
+  CALL Entities.initHeroes
+  ret
+
 wait:
   HALT
   ret
