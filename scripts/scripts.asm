@@ -1,13 +1,14 @@
   CallCode black_border
   CallCode clear_screen
-  PrintScreen PAPER_BLACK, PEN_GREEN, HELLO_TXT
+  ; PrintScreen PAPER_BLACK, PEN_GREEN, HELLO_TXT
   
   CallCode game_init
-  CallCode copy_map
+  ; CallCode copy_map
   ; CallCode input.waitKey
   ; CallCode input.noKey
-  CallCode show_map
+  ; CallCode show_map
 LOOP_SCRIPT:
+  CallCode look_char
   ; CallCode blue_border
   ; CallCode copy_map
   ; CallCode black_border

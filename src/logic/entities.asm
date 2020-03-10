@@ -1,7 +1,7 @@
 MODULE Entities
 
 activePersonage_ptr:
-  dw #0000 ; указатель на текущего персонажа
+  dw #0000 ; указатель на данные текущего персонажа
 CurPersonageNum:
   db #00 ; текущий номер персонажа ( от 0 до PersonagesNum )
 MapCell_ptr:
@@ -13,7 +13,6 @@ ActiveItem_ptr_ground:
 
 ; ------- инициализация на карте всех персонажей из CHAR_SET
 initHeroes:
-  MemSetMapBank
   LD HL, CHARS_SET
 PersonagesNum_ptr:
   LD B, PersonagesNum
@@ -63,5 +62,14 @@ nextChar:
   LD (activePersonage_ptr), HL
   OR 2
   RET
+
+; ------- показать карту с текущим персонажем на экране
+lookChar:
+  LD IX, (activePersonage_ptr)
+  LD D, (IX+Hero.pos.x)
+  LD E, (IX+Hero.pos.y)
+  LD A, (IX+Hero.dir)
+  CALL View.look
+  JP View.draw
 
 ENDMODULE

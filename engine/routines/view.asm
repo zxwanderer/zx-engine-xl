@@ -64,6 +64,14 @@ draw_loop1:
 
     RET
 
+; вход:
+; D - x, E - y,
+; A - dir
+look:
+    CALL map.center_map
+    CALL View.copy
+    RET
+
 ; буфер тайлов
 buffer:
     DUP scrHeight*scrWidth
