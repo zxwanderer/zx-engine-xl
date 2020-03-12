@@ -9,9 +9,13 @@
   ; CallCode show_map
 LOOP_SCRIPT:
   CallCode look_char
+  ProcessKeysWait keytable
   ; CallCode blue_border
   ; CallCode copy_map
   ; CallCode black_border
   ; CallCode wait
   GoTo LOOP_SCRIPT
+  defb _endByte
+
+keytable:
   defb _endByte

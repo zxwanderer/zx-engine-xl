@@ -1,5 +1,11 @@
 MODULE zxengine
 
+process_keys_wait_me:
+  PUSH HL
+  POP HL
+  mLDE
+  JP process
+
 call_code_me:
   mLDE
   PUSH HL

@@ -7,6 +7,7 @@ INIT_VEC equ 0x7D7D
 ; поэтому приходится делать два файла - файл макросов (header) и файл их использования
 
     include "../engine/defines.asm"
+    include "../engine/scankeys.asm"
     include "../engine/routines/utils/memory_h.asm"
 	include "../engine/routines/utils/im2_h.asm"
 	include "../engine/routines/text_h.asm"
