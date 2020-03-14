@@ -1,3 +1,10 @@
+; input keys (?)
+BUTTON_NO      equ %00000
+BUTTON_UP      equ %00001
+BUTTON_DOWN    equ %00010
+BUTTON_LEFT    equ %00100
+BUTTON_RIGHT   equ %01000
+BUTTON_FIRE    equ %10000
 
 ; $7F - B, N, M, Symbol Shift, Space
 DEFINE KEY_B dw 0x107f

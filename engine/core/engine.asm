@@ -1,9 +1,15 @@
 MODULE zxengine
 
 process_keys_wait_me:
-  PUSH HL
-  POP HL
   mLDE
+  PUSH HL
+  EX HL,DE ; в HL указатель на таблицу клавиш
+  XOR A
+  LD (input.pressButtons), A
+  CALL input.waitKey
+  CALL input.scanKeys
+  CALL input.noKey
+  POP HL
   JP process
 
 call_code_me:

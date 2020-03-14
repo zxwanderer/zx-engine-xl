@@ -1,6 +1,7 @@
   CallCode black_border
   CallCode clear_screen
-  ; PrintScreen PAPER_BLACK, PEN_GREEN, HELLO_TXT
+  PrintScreen PAPER_BLACK, PEN_GREEN, HELLO_TXT
+  ProcessKeysWait keytable
   
   CallCode game_init
   ; CallCode copy_map
@@ -18,4 +19,9 @@ LOOP_SCRIPT:
   defb _endByte
 
 keytable:
+  KEY_Q, BUTTON_UP
+  KEY_A, BUTTON_DOWN
+  KEY_O, BUTTON_LEFT
+  KEY_P, BUTTON_RIGHT
+  KEY_M, BUTTON_FIRE 
   defb _endByte

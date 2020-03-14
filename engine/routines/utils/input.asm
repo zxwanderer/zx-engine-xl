@@ -1,5 +1,8 @@
 MODULE input
 
+; статус нажатых кнопок
+pressButtons: defb 00
+
 waitKey:
 	xor a
 	in a,(0xfe)
@@ -17,20 +20,20 @@ noKey:
 	ret
 
 	; честно стырено из движка Wanderers by SamStyle
+	; в HL указатель на таблицу клавиш вида [KEY_XXX] [BUTTON_XXX]
 scanKeys:
-	ld a,(HL) ;//  загружаем первый байт
-	and a  ;проверяем на 0
-	ret z ; возвращаем если 0
-	inc hl ; увеличиваем HL
-	in a,(0xfe) ; читаем значение
-	and (hl) ; сравниваем со вторым байтом
-	inc hl   ; увеличиваем указатель
-	ld e,(hl)
-	inc hl
-	ld d,(hl) ; запоминаем в DE указатель на процедуру
-	inc hl    ; увеличиваем HL
-	jr nz,scanKeys
-	or 2
-	ret
+	LD IX, pressButtons
+scanKeys_loop:
+	LD A,(HL) ;//  загружаем первый байт
+	AND A  ;проверяем на 0
+	RET Z ; возвращаем если 0
+	INC HL ; увеличиваем HL
+	IN A,(0xFE) ; читаем значение
+	AND (HL) ; сравниваем со вторым байтом
+	INC HL   ; увеличиваем указатель
+	JR NZ,scanKeys
+	LD A,(HL)
+	OR (IX)
+	JR scanKeys_loop
 
 ENDMODULE
