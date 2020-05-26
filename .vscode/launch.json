@@ -15,7 +15,7 @@
             },
             "listFiles": [
                 {
-                    "path": "z80-sample-program.list",
+                    "path": "${workspaceFolder}/out/program.list",
                     "asm": "sjasmplus",
                     "mainFile": "${workspaceFolder}/src/make_sna.asm"
                 },
@@ -40,11 +40,11 @@
                 "-wpmem enable"
             ],
             "disassemblerArgs": {
-                "esxdosRst": true
+                "esxdosRst": false
             },
             "rootFolder": "${workspaceFolder}/src",
-            // "topOfStack": "stack_engine",
-            "load": "out/program.sna",
+            "topOfStack": "stack_engine",
+            "load": "${workspaceFolder}/program.sna",
             //"load": "z80-sample-program.nex",
             "smallValuesMaximum": 513,
             "tmpDir": ".tmp"

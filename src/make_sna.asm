@@ -1,4 +1,4 @@
-DEVICE 	ZXSPECTRUM128
+DEVICE ZXSPECTRUM128
   DISPLAY '-----------------------------------'
   include "_memory_mapping.asm"
   

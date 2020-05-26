@@ -12,7 +12,7 @@
                     "--dos866",
                     "--nofakes",
                     "--dirbol",
-                    "--output-dir=${workspaceFolder}/out",
+                    "--outprefix=${workspaceFolder}/out/",
                     "--lst=${workspaceFolder}/out/program.list",
                     "--fullpath",
                     "${workspaceFolder}/src/make_sna.asm"
