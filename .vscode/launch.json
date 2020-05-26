@@ -5,16 +5,49 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "type": "z80-debug",
+            "type": "dezog",
             "request": "launch",
-            "name": "Debug program",
-            "zhostname": "localhost",
-            "zport": 10000,
-            "rootFolder": "${workspaceFolder}",
-            // "topOfStack": "stack_top",
+            "name": "Internal Simulator",
+            "remoteType": "zsim",
+            "zsim": {
+                "visualMemory": "ZX128"
+                //"Z80N": true,
+            },
+            "listFiles": [
+                {
+                    "path": "z80-sample-program.list",
+                    "asm": "sjasmplus",
+                    "mainFile": "${workspaceFolder}/src/make_sna.asm"
+                },
+                /*
+                {
+                    "path": "....../rom48.list",
+                    "asm": "z80asm",
+                    "srcDirs": []
+                }
+                */
+            ],
+            "history": {
+                "reverseDebugInstructionCount": 1000000,
+                "spotCount": 10,
+                "codeCoverageEnabled": true
+            },
+            "startAutomatically": false,
+            "skipInterrupt": true,
+            "commandsAfterLaunch": [
+                "-logpoint enable",
+                "-assert enable",
+                "-wpmem enable"
+            ],
+            "disassemblerArgs": {
+                "esxdosRst": true
+            },
+            "rootFolder": "${workspaceFolder}/src",
+            // "topOfStack": "stack_engine",
             "load": "out/program.sna",
+            //"load": "z80-sample-program.nex",
             "smallValuesMaximum": 513,
             "tmpDir": ".tmp"
-        }
+        },
     ]
 }

@@ -7,7 +7,16 @@
             "type": "shell",
             "label": "make_sna",
             "osx": {
-                "command": "${workspaceFolder}/engine/bin/osx/sjasmplus --dos866 --nofakes --dirbol ${workspaceFolder}/src/make_sna.asm --output-dir=${workspaceFolder}/out"
+                "command": "${workspaceFolder}/engine/bin/osx/sjasmplus",
+                "args": [
+                    "--dos866",
+                    "--nofakes",
+                    "--dirbol",
+                    "--output-dir=${workspaceFolder}/out",
+                    "--lst=${workspaceFolder}/out/program.list",
+                    "--fullpath",
+                    "${workspaceFolder}/src/make_sna.asm"
+                ],
             },
             "linux": {
                 "command": "${workspaceFolder}/engine/bin/linux/sjasmplus --dos866 --nofakes --dirbol ${workspaceFolder}/src/make_sna.asm --output-dir=${workspaceFolder}/out"

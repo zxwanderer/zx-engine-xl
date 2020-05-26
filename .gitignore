@@ -1,3 +1,4 @@
+out/
 *.out
 *.sna
 *.bin
@@ -5,3 +6,4 @@ code.bin
 *.bin.zx7
 *.trd
 .tmp/
+.DS_Store

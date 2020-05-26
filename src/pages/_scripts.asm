@@ -1,2 +1,2 @@
 BEGIN_SCRIPT:
-    include "../scripts/scripts.asm"
+    include "../../scripts/scripts.asm"
