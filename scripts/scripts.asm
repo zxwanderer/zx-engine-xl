@@ -30,7 +30,7 @@ keytable:
   KEY_P 
   defb BUTTON_RIGHT
   KEY_M 
-  defb BUTTON_FIRE 
+  defb BUTTON_FIRE
   defb _endByte
 
 buttons_table:
