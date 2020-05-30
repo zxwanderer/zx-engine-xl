@@ -21,11 +21,16 @@ LOOP_SCRIPT:
   defb _endByte
 
 keytable:
-  KEY_Q, BUTTON_UP
-  KEY_A, BUTTON_DOWN
-  KEY_O, BUTTON_LEFT
-  KEY_P, BUTTON_RIGHT
-  KEY_M, BUTTON_FIRE 
+  KEY_Q
+  defb BUTTON_UP
+  KEY_A 
+  defb BUTTON_DOWN
+  KEY_O
+  defb BUTTON_LEFT
+  KEY_P 
+  defb BUTTON_RIGHT
+  KEY_M 
+  defb BUTTON_FIRE 
   defb _endByte
 
 buttons_table:

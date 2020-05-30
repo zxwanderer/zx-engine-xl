@@ -19,7 +19,7 @@ noKey:
 	jr nz,noKey
 	ret
 
-	; честно стырено из движка Wanderers by SamStyle
+	; принцип честно стырен из движка Wanderers by SamStyle
 	; в HL указатель на таблицу клавиш вида [KEY_XXX] [BUTTON_XXX]
 scanKeys:
 	XOR A
@@ -35,10 +35,10 @@ scanKeys_loop:
 	LD A, (HL); запомнили код
 	INC HL
 	JR NZ, scanKeys_loop
-	LD A, BUTTON_DOWN
 	LD (input.pressButtons), A
 	RET
 
 ENDMODULE
 
 DISPLAY "input.pressButtons ", input.pressButtons
+DISPLAY "scanKeys ", input.scanKeys

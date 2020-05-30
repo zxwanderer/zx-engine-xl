@@ -16,12 +16,11 @@ process_buttons_me:
   PUSH HL
   EX HL,DE ; в HL указатель на таблицу клавиш
   LD A, (input.pressButtons)
-  ; LD A, BUTTON_DOWN
 c_up:
   SRL A
   JR NC, c_down
   PUSH AF
-  ; CALL_SCRIPT_HL
+  CALL_SCRIPT_HL
   POP AF
 c_down:
   SRL A
