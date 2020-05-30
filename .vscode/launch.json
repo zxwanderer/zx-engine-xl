@@ -44,7 +44,7 @@
             },
             "rootFolder": "${workspaceFolder}/src",
             "topOfStack": "stack_engine",
-            "load": "${workspaceFolder}/program.sna",
+            "load": "${workspaceFolder}/out/program.sna",
             //"load": "z80-sample-program.nex",
             "smallValuesMaximum": 513,
             "tmpDir": ".tmp"

@@ -1,5 +1,13 @@
 MODULE zxengine
 
+process_buttons_me:
+  mLDE
+  PUSH HL
+  EX HL,DE ; в HL указатель на таблицу клавиш
+
+  POP HL
+  JP process
+
 process_keys_wait_me:
   mLDE
   PUSH HL

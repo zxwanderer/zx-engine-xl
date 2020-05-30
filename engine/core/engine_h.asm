@@ -21,3 +21,9 @@
     defw zxengine.process_keys_wait_me
     defw addr
   ENDM
+
+; обработать нажатие клавиши и подождать пока отпустит
+  MACRO ProcessButtons addr
+    defw zxengine.process_buttons_me
+    defw addr
+  ENDM

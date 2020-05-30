@@ -11,6 +11,7 @@
 LOOP_SCRIPT:
   CallCode look_char
   ProcessKeysWait keytable
+  ProcessButtons buttons_table
   ; CallCode blue_border
   ; CallCode copy_map
   ; CallCode black_border
@@ -24,4 +25,27 @@ keytable:
   KEY_O, BUTTON_LEFT
   KEY_P, BUTTON_RIGHT
   KEY_M, BUTTON_FIRE 
+  defb _endByte
+
+buttons_table:
+  defw proc_BUTTON_UP
+  defw proc_BUTTON_DOWN
+  defw proc_BUTTON_LEFT
+  defw proc_BUTTON_RIGHT
+  defw proc_BUTTON_FIRE
+  defb _endByte
+
+proc_BUTTON_UP:
+  defb _endByte
+
+proc_BUTTON_DOWN:
+  defb _endByte
+
+proc_BUTTON_LEFT:
+  defb _endByte
+
+proc_BUTTON_RIGHT:
+  defb _endByte
+
+proc_BUTTON_FIRE:
   defb _endByte
