@@ -22,7 +22,8 @@ noKey:
 	; честно стырено из движка Wanderers by SamStyle
 	; в HL указатель на таблицу клавиш вида [KEY_XXX] [BUTTON_XXX]
 scanKeys:
-	LD IX, pressButtons
+	XOR A
+	LD (input.pressButtons), A
 scanKeys_loop:
 	LD A,(HL) ;//  загружаем первый байт
 	AND A  ;проверяем на 0
@@ -30,10 +31,14 @@ scanKeys_loop:
 	INC HL ; увеличиваем HL
 	IN A,(0xFE) ; читаем значение
 	AND (HL) ; сравниваем со вторым байтом
-	INC HL   ; увеличиваем указатель
-	JR NZ,scanKeys
-	LD A,(HL)
-	OR (IX)
-	JR scanKeys_loop
+	INC HL
+	LD A, (HL); запомнили код
+	INC HL
+	JR NZ, scanKeys_loop
+	LD A, BUTTON_DOWN
+	LD (input.pressButtons), A
+	RET
 
 ENDMODULE
+
+DISPLAY "input.pressButtons ", input.pressButtons

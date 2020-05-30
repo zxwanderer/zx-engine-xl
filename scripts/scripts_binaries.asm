@@ -26,10 +26,11 @@ look_char:
   CALL Entities.lookChar
   RET
 
-; blue_border:
-;   LD A, 1
-;   out(#fe),a
-;   ret
+blue_border:
+  LD A, 1
+  out(#fe),a
+  HALT
+  ret
 
 ; random_border:
 ;   LD A, R
