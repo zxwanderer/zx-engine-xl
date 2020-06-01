@@ -27,9 +27,19 @@ look_char:
   RET
 
 blue_border:
-  LD A, 1
+  LD A, PEN_BLUE
   out(#fe),a
-  HALT
+  ret
+
+
+red_border:
+  LD A, PEN_RED
+  out(#fe),a
+  ret
+
+green_border:
+  LD A, PEN_GREEN
+  out(#fe),a
   ret
 
 ; random_border:

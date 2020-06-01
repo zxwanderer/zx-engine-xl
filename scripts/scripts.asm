@@ -41,22 +41,25 @@ buttons_table:
   defw proc_BUTTON_FIRE
   defb _endByte
 
+
 proc_BUTTON_UP:
-  CallCode blue_border
+  ; CallCode blue_border
   defb _endByte
 
 proc_BUTTON_DOWN:
-  CallCode blue_border
+  ; CallCode blue_border
   defb _endByte
 
 proc_BUTTON_LEFT:
+  CharRotMove dir_left
   CallCode blue_border
   defb _endByte
 
 proc_BUTTON_RIGHT:
-  CallCode blue_border
+  CharRotMove dir_right
+  CallCode green_border
   defb _endByte
 
 proc_BUTTON_FIRE:
-  CallCode blue_border
+  CallCode red_border
   defb _endByte

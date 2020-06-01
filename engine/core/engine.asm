@@ -1,54 +1,37 @@
 MODULE zxengine
 
-MACRO CALL_SCRIPT_HL
-  LD E, (HL)
-  INC HL
-  LD D, (HL)
-  INC HL
+MACRO SRL_A_AND_CALL_HL
+  mLDE
+  SRL A
+  JR NC, .exit
+  PUSH AF
   PUSH HL
   EX DE, HL
 	CALL process
   POP HL
+  POP AF
+.exit  
 ENDM
 
 process_buttons_me:
-  mLDE
+  mLDE ; в DE указатель на таблицу клавиш
   PUSH HL
   EX HL,DE ; в HL указатель на таблицу клавиш
   LD A, (input.pressButtons)
 c_up:
-  SRL A
-  JR NC, c_down
-  PUSH AF
-  CALL_SCRIPT_HL
-  POP AF
+  SRL_A_AND_CALL_HL
 c_down:
-  SRL A
-  JR NC, c_left
-  PUSH AF
-  CALL_SCRIPT_HL
-  POP AF
+  SRL_A_AND_CALL_HL
 c_left:
-  SRL A
-  JR NC, c_right
-  PUSH AF
-  CALL_SCRIPT_HL
-  POP AF
+  SRL_A_AND_CALL_HL
 c_right:
-  SRL A
-  JR NC, c_fire
-  PUSH AF
-  CALL_SCRIPT_HL
-  POP AF
+  SRL_A_AND_CALL_HL
 c_fire:
-  SRL A
-  JR NC, c_exit
-  PUSH AF
-  CALL_SCRIPT_HL
-  POP AF
+  SRL_A_AND_CALL_HL
 c_exit:
   POP HL
   JP process
+
 
 process_keys_wait_me:
   mLDE
@@ -107,3 +90,7 @@ varsTab:
   EDUP
 
 ENDMODULE
+
+
+DISPLAY "process_buttons_me ", zxengine.process_buttons_me
+DISPLAY "buttons_table ", buttons_table

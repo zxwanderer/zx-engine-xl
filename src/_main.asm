@@ -13,6 +13,7 @@ INIT_VEC equ 0x7D7D
 	include "../engine/routines/text_h.asm"
     include "../engine/core/engine_h.asm"
 
+    include "./logic/defines/defines.asm"
     include "./logic/defines/Point.asm"
     include "./logic/defines/Hero.asm"
 
