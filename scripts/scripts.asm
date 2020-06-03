@@ -8,9 +8,11 @@
   ; CallCode input.waitKey
   ; CallCode input.noKey
   ; CallCode show_map
-LOOP_SCRIPT:
-  ; CallCode black_border
   CallCode look_char
+LOOP_SCRIPT:
+  CallCode look_char
+  ; CallCode black_border
+  ; CallCode look_char
   ProcessKeysWait keytable
   ProcessButtons buttons_table
   ; CallCode blue_border
@@ -41,13 +43,14 @@ buttons_table:
   defw proc_BUTTON_FIRE
   defb _endByte
 
-
 proc_BUTTON_UP:
-  ; CallCode blue_border
+  CharRotMove dir_up
+  CallCode blue_border
   defb _endByte
 
 proc_BUTTON_DOWN:
-  ; CallCode blue_border
+  CharRotMove dir_down
+  CallCode blue_border
   defb _endByte
 
 proc_BUTTON_LEFT:

@@ -70,4 +70,16 @@ no_mul
   ADD HL, DE
   RET; нельзя отказаться от RET здесь!! - эта процедура используется еще для добавления спрайтов на карту!!!
 
+; Установить ячейку на карте
+; Вход: DE - pos,  D - x, E - y
+;       A - номер спрайта
+set_cell:
+  PUSH AF
+  CALL calc_pos
+  PUSH HL
+  MemSetMapBank
+  POP HL
+  POP AF
+  LD (HL), A
+  RET
     ENDMODULE
