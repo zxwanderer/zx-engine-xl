@@ -1,5 +1,15 @@
 MODULE zxengine
 
+; для использования внутри ассемблера
+
+  MACRO setVar var; заносим значение из A в переменную движка
+    LD ( zxengine.varsTab + var ), A
+  ENDM
+
+	MACRO getVar var; в A заносим значение переменной движка
+    LD A, ( zxengine.varsTab + var )
+  ENDM
+
 MACRO SRL_A_AND_CALL_HL
   mLDE
   SRL A
@@ -68,6 +78,25 @@ call_script_ret:
 	POP HL
 	JP process
 
+; --- получить значение переменной
+; на входе A - номер переменной
+; на выходе 
+;   в DE - указатель на переменную
+;   в A - значение переменной
+getVar:
+	ld de,varsTab
+	mADDA D,E
+	ld A,(DE)
+	ret
+
+set_var_me:
+	mLDA
+	CALL getVar
+	LD A,(HL)
+	INC HL
+	LD (DE),A
+	JP process
+
 start:
   LD HL, START_SCRIPT
 process:
@@ -90,7 +119,3 @@ varsTab:
   EDUP
 
 ENDMODULE
-
-
-DISPLAY "process_buttons_me ", zxengine.process_buttons_me
-DISPLAY "buttons_table ", buttons_table

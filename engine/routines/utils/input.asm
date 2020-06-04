@@ -39,6 +39,3 @@ scanKeys_loop:
 	RET
 
 ENDMODULE
-
-DISPLAY "input.pressButtons ", input.pressButtons
-DISPLAY "scanKeys ", input.scanKeys

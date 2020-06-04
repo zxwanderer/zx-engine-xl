@@ -82,4 +82,17 @@ set_cell:
   POP AF
   LD (HL), A
   RET
-    ENDMODULE
+
+; Прочитать значение ячейки на карте
+; Вход: DE - pos,  D - x, E - y
+; Выход: A - номер спрайта
+
+get_cell:
+  CALL calc_pos
+  PUSH HL
+  MemSetMapBank
+  POP HL
+  LD A, (HL)
+  RET
+  
+  ENDMODULE

@@ -27,3 +27,10 @@
     defw zxengine.process_buttons_me
     defw addr
   ENDM
+
+; установить значение переменной 
+  MACRO SetVar var, value
+    defw zxengine.set_var_me
+    defb var
+    defb value
+  ENDM
